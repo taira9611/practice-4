@@ -1,0 +1,905 @@
+/* ====================共用========================= */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* ul li { */
+/* margin-right: 10px; */
+/* background-color: bisque; */
+/* width: auto; */
+/* } */
+
+/* 把 a 的大小變大 */
+ul li a {
+    /* background-color: yellow; */
+    padding: 16px 8px 10px;
+}
+
+ul li:hover span {
+    border-bottom: 2px solid red;
+}
+
+ul li:hover span.login {
+    border-bottom: none;
+}
+
+ul li a:focus {
+    outline: 1px dashed red;
+    outline-offset: -2px;
+}
+
+ul li a:focus span {
+    border-bottom: 2px solid red;
+}
+
+ul li a:focus span.login {
+    border-bottom: none;
+}
+
+.container-normal {
+    width: 80%;
+    margin: auto;
+    max-width: 1600px;
+}
+
+@media (max-width:1084px) {
+    .container-normal {
+        width: 96%;
+    }
+}
+
+@media (max-width:540px) {
+    .container-normal {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+.container-full {
+    width: 100%;
+    margin: auto;
+    max-width: 1920px;
+}
+
+/* span:hover {
+    text-decoration: underline;
+} */
+
+/* .btn {
+    height: 100%;
+    font-size: 16px;
+    line-height: 1;
+    margin: 8px 0px;
+    padding: 10px 12px;
+    background-color: blue;
+    border-radius: 2px;
+    color: white;
+} */
+
+/* .btn:hover {
+    background-color: #004a7f;
+} */
+
+.w-100 {
+    width: 100%;
+}
+
+/* ====================共用========================= */
+/* =======================標題========================= */
+nav {
+    /* background-color: aqua; */
+    height: 54px;
+    position: relative;
+    display: flex;
+    /* 使用 flexbox 佈局導航欄內部元素 */
+    align-items: center;
+    /* 垂直置中 */
+    justify-content: space-between;
+    /* 元素之間分配空間 */
+}
+
+@media (max-width:860px) {
+    nav.container-normal {
+        width: 100%;
+        padding: 0 20px;
+        justify-content: flex-start;
+        /* 小螢幕時左對齊 */
+    }
+}
+
+/* hamburger */
+nav .left-btn {
+    display: none;
+    height: 100%;
+    /* 確保按鈕可點擊區域高度 */
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    /* 與 Logo 間距 */
+}
+
+@media (max-width:860px) {
+    nav .left-btn {
+        display: flex;
+        /* 在平板以下顯示 */
+    }
+}
+
+nav .left-btn .ham-btn {
+    width: 25px;
+    /* 調整漢堡圖示寬度 */
+    height: 25px;
+    /* 調整漢堡圖示高度 */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+nav .left-btn .ham-btn .line {
+    background-color: black;
+    width: 80%;
+    height: 2px;
+    /* 調整線條粗細 */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s ease;
+    /* 更平滑的過渡效果 */
+}
+
+nav .left-btn .ham-btn .line-1 {
+    top: 25%;
+}
+
+nav .left-btn .ham-btn .line-2 {
+    top: 50%;
+}
+
+nav .left-btn .ham-btn .line-3 {
+    top: 75%;
+}
+
+/* tablet-dropdown-menu */
+nav .tablet-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 54px;
+    left: 0;
+    /* 修正：確保從左邊緣開始 */
+    width: 100%;
+    /* 修正：確保完全覆蓋寬度 */
+    background-color: #f2f2f2;
+    color: #262626;
+    font-size: 15px;
+    z-index: 10;
+    /* 確保在其他內容之上 */
+    overflow-y: auto;
+    /* 如果內容過多可以滾動 */
+    max-height: calc(100vh - 54px);
+    /* 限制高度，避免溢出視窗 */
+}
+
+nav .tablet-dropdown-menu ul li {
+    min-height: 51px;
+    border-bottom: 1px solid rgba(228, 228, 228, 0.7);
+}
+
+nav .tablet-dropdown-menu ul.menu-list>li {
+    margin: 0;
+    /* 移除外邊距，讓邊框更連續 */
+}
+
+
+nav .tablet-dropdown-menu ul.menu-list>li>a,
+nav .tablet-dropdown-menu ul.menu-list>li>label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px 15px 15px;
+    background-color: #f2f2f2;
+    font-size: 15px;
+    color: #262626;
+    text-decoration: none;
+    cursor: pointer;
+    height: 100%;
+}
+
+nav .tablet-dropdown-menu ul.menu-list li .submenu {
+    display: none;
+    padding-top: 1px;
+    padding-left: 30px;
+    background-color: #f2f2f2;
+}
+
+
+nav .tablet-dropdown-menu ul.menu-list li .submenu li a {
+    display: block;
+    height: 100%;
+    padding: 14px 15px 15px;
+    text-decoration: none;
+    color: #262626;
+    background-color: #f2f2f2;
+    font-size: 15px;
+}
+
+/* 摺疊設定 */
+nav .tablet-dropdown-menu ul.menu-list li input[type="checkbox"] {
+    display: none;
+}
+
+nav .tablet-dropdown-menu ul.menu-list li input[type="checkbox"]:checked+label+.submenu {
+    display: block;
+}
+
+nav .tablet-dropdown-menu ul.menu-list li input[type="checkbox"]+label .down-icon {
+    display: inline-block;
+}
+
+nav .tablet-dropdown-menu ul.menu-list li input[type="checkbox"]:checked+label .down-icon {
+    display: none;
+}
+
+nav .tablet-dropdown-menu ul.menu-list li input[type="checkbox"]:checked+label .up-icon {
+    display: inline-block;
+}
+
+nav .tablet-dropdown-menu ul.menu-list li input[type="checkbox"]+label .up-icon {
+    display: none;
+}
+
+
+nav #ham-menu-switch:checked+.left-btn .ham-btn .line-1 {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+nav #ham-menu-switch:checked+.left-btn .ham-btn .line-2 {
+    opacity: 0;
+    /* 修正：使用 opacity 而不是 display none */
+}
+
+nav #ham-menu-switch:checked+.left-btn .ham-btn .line-3 {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+nav #ham-menu-switch:checked~.tablet-dropdown-menu {
+    display: block;
+    z-index: 9;
+}
+
+/* logo */
+nav .logo {
+    width: 137px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* 移除 position: absolute; left: 50%; transform: translateX(-50%); */
+    /* 在 flex 佈局下不再需要，如果需要置中可使用 justify-content 或 margin-left: auto/margin-right: auto */
+}
+
+@media (max-width:860px) {
+    nav .logo {
+        position: static;
+        /* 讓其回歸正常文檔流 */
+        margin: 0 auto;
+        /* 在平板模式下置中 */
+    }
+}
+
+nav .logo img {
+    width: 108px;
+    height: 23px;
+}
+
+/* menu */
+nav .menu {
+    font-size: 13px;
+}
+
+nav .menu li a {
+    color: #262626;
+}
+
+nav .pc-menu {
+    /* position: absolute; */
+    /* 移除絕對定位，讓其參與 flex 佈局 */
+    /* top: 0; */
+    /* left: 137px; */
+    width: auto;
+    /* 讓寬度自動適應內容 */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    /* 讓 PC 選單盡可能佔用空間 */
+}
+
+@media (max-width:860px) {
+    nav ul.pc-menu {
+        display: none;
+    }
+}
+
+nav .pc-menu li {
+    display: inline-block;
+}
+
+nav .pc-menu li a {
+    border: 1px solid transparent;
+    display: inline-block;
+    margin-top: 1px;
+    padding: 16px 8px 10px;
+    height: 48px;
+    outline-offset: -2px;
+}
+
+nav .pc-menu li a span:hover,
+nav .menu-right .menu-right-list a span:hover {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+}
+
+nav .menu-right {
+    /* position: absolute; */
+    /* 移除絕對定位 */
+    /* top: 0; */
+    /* right: 0; */
+    width: auto;
+    /* 修正：寬度自動適應內容 */
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+nav .menu-right .menu-switch {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav .menu-right .menu-right-list {
+    display: inline-block;
+    padding: 0px 5px;
+}
+
+nav .menu-right .menu-right-list a {
+    color: black;
+}
+
+nav .menu-right .menu-right-list a i {
+    width: 17px;
+    height: 17px;
+}
+
+nav .menu-right .login-pic {
+    display: flex;
+    align-items: center;
+}
+
+nav .menu-right .login-pic .login {
+    width: 32px;
+    height: 32px;
+}
+
+/* 摺疊設定 */
+nav #dropdown-menu-switch:checked~.menu-right .menu-switch {
+    background-color: #f2f2f2;
+}
+
+nav #dropdown-menu-switch:checked~.nav-dropdown {
+    display: block;
+}
+
+/* nav-dropdown-menu */
+nav .nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    /* 修正：確保靠右對齊 */
+    width: 100%;
+    /* 修正：預設為 100% 寬度 */
+    max-width: 1230px;
+    /* 增加最大寬度限制 */
+    margin-top: -2px;
+    background-color: #f2f2f2;
+    z-index: 9;
+    box-shadow: 0 0.1875rem 0.4375rem 0 rgba(0, 0, 0, 0.13);
+    /* 增加陰影 */
+}
+
+nav .nav-dropdown .nav-dropdown-menu {
+    padding: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    height: auto;
+    /* 讓內容自動撐開高度 */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* 自動適應欄數 */
+    gap: 20px;
+}
+
+nav .nav-dropdown .nav-dropdown-menu ul {
+    display: block; /* 覆寫全域的 display: flex */
+    height: auto; /* 覆寫全域的 height: 100% */
+    width: auto; /* 寬度由 grid 控制 */
+    font-size: 13px;
+    margin: 0; /* 移除 margin，由 gap 控制間距 */
+}
+
+nav .nav-dropdown .nav-dropdown-menu ul li {
+    margin-bottom: 10px;
+}
+
+nav .nav-dropdown .nav-dropdown-menu ul p {
+    font-weight: bold;
+}
+
+nav .nav-dropdown .nav-dropdown-menu ul li a span {
+    color: #262626;
+}
+
+nav .nav-dropdown .menu-btm {
+    width: 100%;
+    height: 40px;
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+}
+
+nav .nav-dropdown .menu-btm a {
+    color: #000000cc;
+    font-size: 13px;
+}
+
+nav .nav-dropdown .menu-btm a:hover {
+    text-decoration: underline;
+}
+
+
+
+    header {
+        background-color: lightblue;
+        width: 100%;
+        position: relative;
+    }
+
+    /* ================大圖==================== */
+    /* ===============三個選項=================== */
+
+    main {
+        /* background-color: lemonchiffon; */
+        max-height: 15000px;
+        /* 這個設定可能不需要，讓內容決定高度 */
+        position: relative;
+    }
+
+    main.container-normal section {
+        /* background-color: cadetblue; */
+        /* height: 450px; */
+        margin-bottom: 50px;
+    }
+
+    main section.three-choice {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 20px 0;
+        /* 增加一些內邊距 */
+    }
+
+    main section.three-choice .one-choice {
+        margin: 16px 24px;
+        display: flex;
+        flex-direction: column;
+        /* 讓圖片和文字垂直排列 */
+        align-items: center;
+        /* 水平置中 */
+        text-align: center;
+        /* background-color: aqua; */
+        flex-shrink: 0;
+        /* 防止項目縮小過多 */
+    }
+
+    main section.three-choice .one-choice.choice-1 {
+        width: 169px;
+        /* 保持原寬度，但在小螢幕下會換行 */
+        /* height: 72px; */
+        /* 移除固定高度 */
+    }
+
+    main section.three-choice .one-choice.choice-2 {
+        width: 127px;
+        /* height: 72px; */
+        /* 移除固定高度 */
+    }
+
+    main section.three-choice .one-choice.choice-3 {
+        width: 124px;
+        /* height: 72px; */
+        /* 移除固定高度 */
+    }
+
+    @media (max-width: 540px) {
+        main section.three-choice .one-choice {
+            width: 100px;
+            /* 在手機上調整寬度，讓他們能排更多個 */
+            margin: 10px 15px;
+            /* 調整間距 */
+        }
+    }
+
+
+    main section.three-choice .one-choice img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+        /* 增加圖片和文字的間距 */
+    }
+
+    main section.three-choice .one-choice .title {
+        font-size: 16px;
+        line-height: 1.3;
+        /* 調整行高 */
+    }
+
+    main section.three-choice .one-choice:hover {
+        text-decoration: underline;
+    }
+
+    /* ===============三個選項=================== */
+    /* ===============四張圖片=================== */
+
+    main section.four-cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* 使用 gap 屬性代替 calc 計算間距，更簡潔 */
+    }
+
+    main section.four-cards .one-card {
+        background-color: #fff;
+        width: calc((100% - 20px * 3) / 4);
+        /* 保持桌面版四欄計算 */
+        /* height: 450px; */
+        /* 修正：移除固定高度 */
+        box-shadow: 0 0.1875rem 0.4375rem 0 rgba(0, 0, 0, 0.13),
+            0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.11);
+        position: relative;
+        display: flex;
+        /* 讓卡片內容使用 flex 佈局 */
+        flex-direction: column;
+        /* 垂直排列 */
+    }
+
+    /* main section.four-cards-2 .one-card { */
+    /* height: 550px; */
+    /* 修正：移除固定高度 */
+    /* } */
+
+    main section.four-cards .one-card .one-card-body {
+        padding: 24px 24px 0;
+        flex-grow: 1;
+        /* 讓內容區塊佔據剩餘空間 */
+        display: flex;
+        flex-direction: column;
+    }
+
+    main section.four-cards .one-card .one-card-body .title {
+        /* width: 90%; */
+        height: auto;
+        /* 修正：高度自動適應內容 */
+        min-height: 70px;
+        /* 設定最小高度防止內容過短時影響排版 */
+        font-size: 29px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+
+    main section.four-cards-2 .one-card .one-card-body .title {
+        height: auto;
+        /* 修正：高度自動適應內容 */
+        min-height: 120px;
+        /* 設定最小高度防止內容過短時影響排版 */
+        font-size: 29px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+
+    main section.four-cards .one-card .one-card-body .content {
+        /* width: 237px; */
+        font-size: 16px;
+        flex-grow: 1;
+        /* 讓內容佔據剩餘空間 */
+    }
+
+    main section.four-cards .one-card .one-card-footer {
+        padding: 16px 24px 24px;
+        /* position: absolute; */
+        /* 修正：移除絕對定位，讓其在 flex 佈局中自然排列 */
+        /* bottom: 0; */
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: auto;
+        /* 將 footer 推到底部 */
+    }
+
+    main section.four-cards .one-card .one-card-footer .link {
+        /* width: 260px; */
+        /* 移除固定寬度 */
+        height: 40px;
+        color: #0067b8;
+        padding: 8px 20px 8px 0px;
+    }
+
+    /* 四張卡片在不同斷點的響應式調整 */
+    @media (max-width: 1084px) {
+        main section.four-cards {
+            gap: 15px;
+            /* 調整間距 */
+        }
+
+        main section.four-cards .one-card {
+            width: calc((100% - 15px) / 2);
+            /* 修正：兩欄佈局 */
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        /* 新增斷點，為平板橫向或更小的螢幕 */
+        main section.four-cards .one-card {
+            width: 100%;
+            /* 修正：單欄佈局 */
+            max-width: 400px;
+            /* 可以限制一下最大寬度，避免過寬 */
+            margin: 0 auto 20px auto;
+            /* 置中並增加底部間距 */
+        }
+
+        main section.four-cards {
+            justify-content: center;
+            /* 讓單欄卡片置中 */
+            gap: 0;
+            /* 移除間距，因為已經透過 margin 處理 */
+        }
+    }
+
+
+    /* ===============四張圖片=================== */
+    /* =====================big-img============== */
+
+    main section.big-img {
+        background-color: lemonchiffon;
+        margin-bottom: 50px;
+        /* 確保與下方區塊有間距 */
+    }
+
+    /* =====================big-img============== */
+    /* =====================other================ */
+    main .other {
+        position: relative;
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+
+    main .other .follow {
+        padding: 0 12px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* 垂直置中 */
+        margin-bottom: 15px;
+        /* 增加與下方文字的間距 */
+    }
+
+    main .other .follow p {
+        margin-right: 15px;
+        /* 增加文字與圖示的間距 */
+    }
+
+    main .other .follow ul {
+        display: flex;
+        align-items: center;
+    }
+
+    main .other .follow ul li {
+        margin-right: 10px;
+    }
+
+
+    main .other .follow .follow-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    main .other .follow .Facebook {
+        background-image: url(../microsoft-img/Facebook\ 2x.avif);
+        background-position: center;
+        background-size: cover;
+    }
+
+    main .other .follow .Youtube {
+        background-image: url(../microsoft-img/YouTube\ 2x.avif);
+        background-position: center;
+        background-size: cover;
+    }
+
+    main .other p {
+        padding: 0 5px;
+    }
+
+    /* to-top */
+    main .to-top {
+        width: 125px;
+        height: 40px;
+        position: fixed;
+        /* 修正：改為 fixed，讓它在滾動時固定 */
+        right: 20px;
+        /* 修正：固定右邊距離 */
+        bottom: 20px;
+        /* 修正：固定底部距離 */
+        border-radius: 5px;
+        background-color: #bfbfbf;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        /* 確保在最上層 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        /* 增加陰影 */
+    }
+
+    main .to-top a {
+        color: black;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        /* 圖示與文字間距 */
+    }
+
+
+    /* =====================other================ */
+    /* =====================footer================ */
+
+    footer {
+        background-color: rgb(238, 235, 235);
+        width: 100%;
+        /* height: 400px; */
+        /* 修正：移除固定高度 */
+        font-size: 11px;
+        padding: 40px 0;
+        /* 增加上下內邊距 */
+    }
+
+    footer p {
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        /* 標題與列表間距 */
+    }
+
+    footer .footer-real {
+        /* background-color: pink; */
+        height: 100%;
+    }
+
+    footer .footer-menu {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* 使用 gap 代替複雜計算 */
+    }
+
+    footer .footer-menu ul {
+        /* background-color: azure; */
+        width: calc((100% - 20px * 5) / 6);
+        /* 保持桌面版六欄計算 */
+        flex-direction: column;
+        /* 讓列表項目垂直排列 */
+        align-items: flex-start;
+        /* 左對齊 */
+        height: auto;
+        /* 高度自動適應內容 */
+    }
+
+    footer .footer-menu ul li {
+        margin-bottom: 10px;
+    }
+
+    footer .footer-menu ul li a span {
+        color: #616161;
+        /* 調整連結顏色 */
+    }
+
+    footer .footer-menu ul li a:hover span {
+        border-bottom: 1px solid #616161;
+        /* 調整 hover 效果 */
+    }
+
+    /* Footer 在不同斷點的響應式調整 */
+    @media (max-width: 1084px) {
+        footer .footer-menu {
+            gap: 15px;
+        }
+
+        footer .footer-menu ul {
+            width: calc((100% - 15px * 2) / 3);
+            /* 修正：三欄佈局 */
+        }
+    }
+
+    @media (max-width: 768px) {
+        footer .footer-menu ul {
+            width: calc((100% - 15px) / 2);
+            /* 修正：兩欄佈局 */
+        }
+    }
+
+    @media (max-width: 540px) {
+        footer .footer-menu {
+            gap: 10px;
+        }
+
+        footer .footer-menu ul {
+            width: 100%;
+            /* 修正：單欄佈局 */
+            margin-bottom: 20px;
+            /* 增加垂直間距 */
+        }
+    }
+
+    /* 底部導覽列 (如果有內容) */
+    /* footer .footer-nav { */
+    /* 根據需要添加樣式 */
